@@ -1,18 +1,48 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Decodificador - Challenge ONE</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="assets/css/styles.css">
+  <title>Decodificador - Challenge ONE</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body>
-    <main>
-        <section>
 
-        </section>
-    </main>
+<body>
+  <main>
+    <img id="logo" src="assets/img/alura.png" alt="Logomarca da empresa Alura">
+    <section>
+      <div class="main-content">
+        <div class="input-side">
+          <textarea name="input-entry" id="" cols="30" rows="10" placeholder="Digite seu texto"></textarea>
+
+          <div class="input-advice">
+            <img src="assets/img/Vector.png" alt="">
+            <span>Apenas letras minúsculas e sem acento.</span>
+          </div>
+
+          <div class="input-buttons">
+            <button class="input-btn btn-primary">Criptografar</button>
+            <button class="input-btn btn-secondary">Descriptografar</button>
+          </div>
+        </div>
+        <div class="img-side">
+          <div class="img-container">
+            <img src="assets/img/menino-lupa.svg" alt="Imagem de garoto analisando um diamante com uma lupa.">
+            <h2>Nenhuma mensagem encontrada</h2>
+            <p>Digite um texto que você deseja criptografar ou descriptografar.</p>
+          </div>
+          <div class="result-container"></div>
+        </div>
+      </div>
+    </section>
+  </main>
 </body>
+
 </html>
