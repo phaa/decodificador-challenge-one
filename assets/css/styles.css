@@ -25,10 +25,6 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
-section {
-  min-height: 100vh;
-}
-
 #logo {
   position: absolute;
   top: 40px;
@@ -36,7 +32,7 @@ section {
 }
 
 .main-content {
-  min-height: 100vh;
+  height: 100vh;
   display: grid;
   grid-template-columns: 2.3fr 1fr;
   gap: 80px;
@@ -80,17 +76,16 @@ section {
   color: var(--light-gray-color);
 }
 
-.input-buttons {
+.btn-container {
   width: 100%;
+  margin-bottom: 32px;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   gap: 24px;
-  align-self: flex-end;
-  margin-bottom: 40px;
 }
 
-.input-btn {
+.btn {
   height: 67px;
   width: 100%;
   padding: 0 24px;
@@ -105,13 +100,13 @@ section {
   color: var(--white-color);
 }
 
-.btn-secondary {
-  background: var(--secondary-color);
+.btn-transparent {
+  background: transparent;
   color: var(--primary-color);
   border-color: var(--primary-color);
 }
 
-.img-side {
+.result-side {
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
@@ -130,10 +125,21 @@ section {
   margin-bottom: 16px;
 }
 
-
-.border {
-  border: 1px solid #0A3871;
+.result-container {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  font-size: 24px;
+  color: var(--light-gray-color);
+  height: 100%;
+  width: 100%;
 }
+
+.result-container button {
+  margin-top: auto;
+  bottom: 0;
+}
+
 
 @media screen and (max-width: 768px) {
   #logo {
@@ -151,11 +157,11 @@ section {
     margin-top: 200px;
   }
 
-  .input-buttons {
+  .btn-container {
     margin-bottom: 0;
   }
 
-  .img-side {
+  .result-side {
     padding: 0;
   }
   
@@ -174,11 +180,11 @@ section {
     padding: 16px;
   }
 
-  .input-buttons {
+  .btn-container {
     flex-direction: column;
   }
 
-  .img-side {
+  .result-side {
     padding: var(--gap);
   }
 }

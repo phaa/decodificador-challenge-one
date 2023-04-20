@@ -27,18 +27,21 @@
             <span>Apenas letras minúsculas e sem acento.</span>
           </div>
 
-          <div class="input-buttons">
-            <button class="input-btn btn-primary">Criptografar</button>
-            <button class="input-btn btn-secondary">Descriptografar</button>
+          <div class="btn-container">
+            <button class="btn btn-primary">Criptografar</button>
+            <button class="btn btn-transparent">Descriptografar</button>
           </div>
         </div>
-        <div class="img-side">
+        <div class="result-side">
           <div class="img-container">
             <img src="assets/img/menino-lupa.svg" alt="Imagem de garoto analisando um diamante com uma lupa.">
             <h2>Nenhuma mensagem encontrada</h2>
             <p>Digite um texto que você deseja criptografar ou descriptografar.</p>
           </div>
-          <div class="result-container"></div>
+          <div class="result-container" style="display: none;">
+            <p></p>
+            <button class="btn btn-transparent">Copiar</button>
+          </div>
         </div>
       </div>
     </section>
