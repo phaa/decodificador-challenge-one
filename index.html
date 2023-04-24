@@ -20,7 +20,8 @@
     <section>
       <div class="main-content">
         <div class="input-side">
-          <textarea name="input-entry" id="" cols="30" rows="10" placeholder="Digite seu texto"></textarea>
+          <textarea name="input-entry" id="text-input" cols="30" rows="10" placeholder="Digite seu texto"
+            autofocus></textarea>
 
           <div class="input-advice">
             <img src="assets/img/Vector.png" alt="">
@@ -28,24 +29,127 @@
           </div>
 
           <div class="btn-container">
-            <button class="btn btn-primary">Criptografar</button>
-            <button class="btn btn-transparent">Descriptografar</button>
+            <button id="crypt" class="btn btn-primary">Criptografar</button>
+            <button id="decrypt" class="btn btn-transparent">Descriptografar</button>
           </div>
         </div>
         <div class="result-side">
-          <div class="img-container">
+          <div id="img-container" class="img-container" style="display: none;">
             <img src="assets/img/menino-lupa.svg" alt="Imagem de garoto analisando um diamante com uma lupa.">
             <h2>Nenhuma mensagem encontrada</h2>
             <p>Digite um texto que você deseja criptografar ou descriptografar.</p>
           </div>
-          <div class="result-container" style="display: none;">
-            <p></p>
+          <div id="result-container" class="result-container">
+            <p id="text-output">pairaibenterns poberr enterncairair enterssenter dentersaifimesober enter tenterr fimesnailimeszaidober enterlenter coberm sufatcenterssober!</p>
             <button class="btn btn-transparent">Copiar</button>
           </div>
         </div>
       </div>
     </section>
   </main>
+
+  <script>
+    const cryptBtn = document.getElementById("crypt");
+    const decryptBtn = document.getElementById("decrypt");
+    const textInput = document.getElementById("text-input");
+    const textOutput = document.getElementById("text-output");
+    const imgContainer = document.getElementById("img-container");
+    const resultContainer = document.getElementById("result-container");
+
+    const changeToResult = () => {
+      imgContainer.style.display = "none";
+      resultContainer.style.display = "flex";
+    };
+
+    const encrypt = (text) => {
+      let newText = "";
+      for (let char of text) {
+        switch (char) {
+          case 'a': {
+            newText += "ai";
+            break;
+          }
+          case 'e': {
+            newText += "enter";
+            break;
+          }
+          case 'i': {
+            newText += "imes";
+            break;
+          }
+          case 'o': {
+            newText += "ober";
+            break;
+          }
+          case 'u': {
+            newText += "ufat";
+            break;
+          }
+          default: {
+            newText += char;
+            break;
+          }
+        }
+      }
+      return newText;
+    };
+
+    const decrypt = (text) => {
+      let newText = "";
+      let i = 0;
+      let char = "";
+
+      while (i < text.length) {
+        char = text.charAt(i);
+
+        if (char === "a" && text.substring(i + 1, i + 2) == "i") {
+          newText += "a";
+          i+=2;
+        } 
+        else if (char === "e" && text.substring(i + 1, i + 5) == "nter") {
+          newText += "e";
+          i+=5;
+        } 
+        else if (char === "i" && text.substring(i + 1, i + 4) == "mes") {
+          newText += "i";
+          i+=4;
+        } 
+        else if (char === "o" && text.substring(i + 1, i + 4) == "ber") {
+          newText += "o";
+          i+=4;
+        } 
+        else if (char === "u" && text.substring(i + 1, i + 4) == "fat") {
+          newText += "u";
+          i+=4;
+        } 
+        else {
+          newText += char;
+          i++;
+        }
+        
+      }
+      return newText;
+    };
+
+    const normalize = (text) => {
+      return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+    }
+
+    cryptBtn.onclick = () => {
+      changeToResult();
+      const string = encrypt(normalize(textInput.value));
+      textOutput.innerHTML = string;
+    };
+
+    decryptBtn.onclick = () => {
+      changeToResult();
+      const string = decrypt(normalize(textInput.value));
+      textOutput.innerHTML = string;
+    };
+
+
+
+  </script>
 </body>
 
 </html>
