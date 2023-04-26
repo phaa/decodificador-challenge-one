@@ -41,16 +41,20 @@
           </div>
           <div id="result-container" class="result-container">
             <p id="text-output"></p>
-            <button class="btn btn-transparent">Copiar</button>
+            <button id="copy" class="btn btn-transparent">
+              Copiar
+            </button>
           </div>
         </div>
       </div>
+      <div id="snackbar"></div>
     </section>
   </main>
 
   <script>
     const cryptBtn = document.getElementById("crypt");
     const decryptBtn = document.getElementById("decrypt");
+    const copyBtn = document.getElementById("copy");
     const textInput = document.getElementById("text-input");
     const textOutput = document.getElementById("text-output");
     const imgContainer = document.getElementById("img-container");
@@ -135,6 +139,15 @@
       return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
     }
 
+    const showSnack = (text) => {
+      let snack = document.getElementById("snackbar");
+      snack.className = "show";
+      snack.innerHTML = text;
+      setTimeout(() => { 
+        snack.className = snack.className.replace("show", ""); 
+      }, 3000);
+    }
+
     cryptBtn.onclick = () => {
       changeToResult();
       const string = encrypt(normalize(textInput.value));
@@ -145,6 +158,18 @@
       changeToResult();
       const string = decrypt(normalize(textInput.value));
       textOutput.innerHTML = string;
+    };
+
+    copyBtn.onclick = () => {
+      const outText = textOutput.innerHTML;
+      
+      if(outText) {
+        navigator.clipboard.writeText(outText);
+        showSnack("Texto copiado!");
+      } else {
+        showSnack("Não há nada para copiar :(");
+      }
+      
     };
 
 
